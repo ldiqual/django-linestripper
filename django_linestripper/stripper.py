@@ -13,12 +13,12 @@ FIND_START_BLANK_LINE = r'^(\s*)\n'
 FIND_TAG = STRIPPER_TAG
 
 # Replacers
-REPLACE_WITH_TAG = r'\n'+ STRIPPER_TAG +'\n' if STRIPPER_CLEAR_LINE else r'\n\1'+ STRIPPER_TAG +'\n'
+REPLACE_WITH_TAG = '\n'+ STRIPPER_TAG +'\n' if STRIPPER_CLEAR_LINE else r'\n\1'+ STRIPPER_TAG +'\n'
 REPLACE_START_WITH_TAG = STRIPPER_TAG +'\n' if STRIPPER_CLEAR_LINE else r'\n\1'+ STRIPPER_TAG +'\n'
 
 # Deleters
-DELETE_BLANK_LINE = r'\n'
-DELETE_START_BLANK_LINE = r''
+DELETE_BLANK_LINE = '\n'
+DELETE_START_BLANK_LINE = ''
 DELETE_TAG = ''
 
 '''
@@ -32,7 +32,8 @@ class StripperMiddleware(object):
 		# Suppress blank lines
 		response.content = re.sub(FIND_BLANK_LINE, DELETE_BLANK_LINE, response.content)
 		# Delete STRIPPER_TAG
-		response.content = re.sub(FIND_TAG, DELETE_TAG, response.content)
+		# response.content = re.sub(FIND_TAG, DELETE_TAG, response.content)
+		response.content = response.content.replace(STRIPPER_TAG, DELETE_TAG)
 		return response
 
 	def process_request(self, request):
@@ -40,7 +41,7 @@ class StripperMiddleware(object):
 
 '''
 This is called BEFORE the template generation.
-It replaces blank lines by STRIPPER_TAG
+It adds STRIPPER_TAG to blank lines so they aren't removed in the middleware
 '''
 class Loader(app_directories.Loader):
     is_usable = True

@@ -71,11 +71,11 @@ A unique string that you don't use in your templates. It will be suppressed by t
 
 Clear every non-generated whitespace metacharacter before `\n`. For instance:
 
-#### With `STRIPPER_CLEAR_LINE = False` ####
+##### With `STRIPPER_CLEAR_LINE = False` #####
     \n\t\t\t\n
     => \n\t\t\t\n
     
-#### With `STRIPPER_CLEAR_LINE = True` ####
+##### With `STRIPPER_CLEAR_LINE = True` #####
     \n\t\t\t\n
     => \n\n
     
