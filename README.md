@@ -59,13 +59,13 @@ Advanced usage
 
 Two configuration constants can be overriden in `settings.py`:
 
-### `STRIPPER_TAG` ###
+#### `STRIPPER_TAG` ####
 
-*defaults to `__STRIPPER_TAG__`*
+*defaults to `"__STRIPPER_TAG__"`*
 
 A unique string that you don't use in your templates. It will be suppressed by the django-linestripper middleware.
 
-### `STRIPPER_CLEAR_LINE` ###
+#### `STRIPPER_CLEAR_LINE` ####
 
 *defaults to `False`*
 
