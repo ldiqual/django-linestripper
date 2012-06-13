@@ -57,7 +57,13 @@ Setup instructions
 Advanced usage
 --------------
 
-Two configuration constants can be overriden in `settings.py`:
+The following constants can be overriden in `settings.py`:
+
+#### `STRIPPER_ENABLED` ####
+
+*defaults to `True`*
+
+Indicates weither django-linestripper is enabled or not.
 
 #### `STRIPPER_TAG` ####
 
@@ -85,6 +91,12 @@ How it works
  * Step 1: tag empty lines with `__STRIPPER_TAG__`    
  * Step 2: wait for the rendered template
  * Step 3: suppress blank lines and suppress `__STRIPPER_TAG__`
+ 
+Known bugs
+----------
+
+If your rendered template isn't part of the HttpResponse, the stripper middleware won't intercept the rendering.
+It can be a pain if you're using templates as mail templates.
 
 Notes
 -----
